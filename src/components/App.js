@@ -82,7 +82,7 @@ const App = () => {
             fontStyle="italic" 
             color="#555"
           >
-            Users List
+            User List
           </Box>
         </Typography>
         <Box marginBottom={3}>
