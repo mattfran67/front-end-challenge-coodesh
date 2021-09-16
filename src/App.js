@@ -98,6 +98,7 @@ const App = () => {
           </Typography>
         </Box>
         <FilterBar />
+        <ListHeader />
         <ModalProvider>
           {loading && page.current === 1 ? loadingEl : userList}
           {loading && page.current > 1 && loadingEl}
@@ -105,7 +106,7 @@ const App = () => {
         </ModalProvider>
       </Container>
     </>
-  );
-};
+  )
+}
 
 export default App

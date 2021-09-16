@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useContext } from "react"
+import { ModalContext } from "context/ModalContext"
 import {
   Box,
   Button, 
@@ -19,6 +20,12 @@ const useStyles = makeStyles({
 
 export const UserCard = ({ user }) => {
   const classes = useStyles()
+  const { openModal, passData } = useContext(ModalContext)
+
+  const handleClick = userData => {
+    passData(userData)
+    openModal()
+  }
 
   const userObject = {
     name: `${user.name.first} ${user.name.last}`,
@@ -44,7 +51,7 @@ export const UserCard = ({ user }) => {
             <Button
               variant="contained"
               color="secondary"
-              onClick={() => {}}
+              onClick={() => handleClick(user)}
             >
               View
             </Button>
