@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 
+import { FilterBar } from "components/FilterBar"
 import { Observer } from "components/Observer"
 import { ListHeader } from "components/ListHeader"
 import { NavBar } from "components/NavBar"
@@ -94,6 +95,7 @@ const App = () => {
             </Box>
           </Typography>
         </Box>
+        <FilterBar />
         <ListHeader />
         {loading && page.current === 1 ? loadingEl : userList}
         {loading && page.current > 1 && loadingEl}
