@@ -7,6 +7,7 @@ import { ListHeader } from "components/ListHeader"
 import { NavBar } from "components/NavBar"
 
 import { UsersContext } from "context/UsersContext"
+import { ModalProvider } from "context/ModalContext"
 
 import {
   Box,
@@ -28,8 +29,8 @@ const styles = makeStyles({
 })
 
 const App = () => {
-  const { error, data, loading, page } = useContext(UsersContext);
-  const classes = styles();
+  const { error, data, loading, page } = useContext(UsersContext)
+  const classes = styles()
 
   const userList = data.map((user, index) => (
     <UserCard key={index} user={user} />
@@ -97,10 +98,11 @@ const App = () => {
           </Typography>
         </Box>
         <FilterBar />
-        <ListHeader />
-        {loading && page.current === 1 ? loadingEl : userList}
-        {loading && page.current > 1 && loadingEl}
-        {userList.length > 1 && !loading && <Observer />}
+        <ModalProvider>
+          {loading && page.current === 1 ? loadingEl : userList}
+          {loading && page.current > 1 && loadingEl}
+          {userList.length > 1 && !loading && <Observer />}
+        </ModalProvider>
       </Container>
     </>
   );
