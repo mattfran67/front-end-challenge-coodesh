@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 
+import { Observer } from "components/Observer"
 import { ListHeader } from "components/ListHeader"
 import { NavBar } from "components/NavBar"
 
@@ -9,6 +10,8 @@ import {
   Box,
   Card,
   CardContent,
+  CircularProgress,
+  Grid,
   Container,
   makeStyles,
   Typography,
@@ -23,12 +26,29 @@ const styles = makeStyles({
 })
 
 const App = () => {
-  const { error, data } = useContext(UsersContext);
+  const { error, data, loading, page } = useContext(UsersContext);
   const classes = styles();
 
   const userList = data.map((user, index) => (
     <div key={index}>{user.name.first}</div>
-  ));
+  ))
+
+  const loadingEl = (
+    <Grid 
+      alignItems="center" 
+      container 
+      justifyContent="center"
+    >
+      <Grid item>
+        <Typography variant="h5" component="p">
+          Loading...
+        </Typography>
+      </Grid>
+      <Grid item>
+        <CircularProgress />
+      </Grid>
+    </Grid>
+  )
 
   if (error) {
     return (
@@ -41,7 +61,7 @@ const App = () => {
           </CardContent>
         </Card>
       </Container>
-    );
+    )
   }
 
   return (
@@ -75,7 +95,9 @@ const App = () => {
           </Typography>
         </Box>
         <ListHeader />
-        {userList}
+        {loading && page.current === 1 ? loadingEl : userList}
+        {loading && page.current > 1 && loadingEl}
+        {userList.length > 1 && !loading && <Observer />}
       </Container>
     </>
   );
