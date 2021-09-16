@@ -1,9 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { CssBaseline } from '@material-ui/core'
+import App from 'components/App'
+import { UsersProvider } from 'context/UsersContext'
 
 ReactDOM.render(
-  <App />,
+  <>
+    <CssBaseline />
+    <UsersProvider>
+      <App />
+    </UsersProvider>
+  </>,
   document.getElementById('root')
-);
+)
