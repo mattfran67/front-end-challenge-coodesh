@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 
 import { FilterBar } from "components/FilterBar"
 import { Observer } from "components/Observer"
+import { UserCard } from "components/UserCard"
 import { ListHeader } from "components/ListHeader"
 import { NavBar } from "components/NavBar"
 
@@ -31,7 +32,7 @@ const App = () => {
   const classes = styles();
 
   const userList = data.map((user, index) => (
-    <div key={index}>{user.name.first}</div>
+    <UserCard key={index} user={user} />
   ))
 
   const loadingEl = (
