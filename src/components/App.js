@@ -4,7 +4,7 @@ import { FilterBar } from "components/FilterBar"
 import { Observer } from "components/Observer"
 import { UserCard } from "components/UserCard"
 import { ListHeader } from "components/ListHeader"
-import { NavBar } from "components/NavBar"
+import { NavBar } from "components/Navbar"
 import { UserModal } from "components/UserModal"
 
 import { UsersContext } from "context/UsersContext"
